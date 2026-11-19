@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Квартира у моря в Крыму: новостройки с ипотекой от 8%</title>
+<meta name="description" content="Новостройки Крыма и Севастополя от застройщиков: Севастополь, Симферополь, Евпатория. Ипотека от 8% при соответствии условиям программы, расчёт платежа, сделка дистанционно. Для покупателя без комиссии.">
+<meta property="og:title" content="Квартира у моря в Крыму с ипотекой от 8%">
+<meta property="og:description" content="Подберём новостройку под бюджет, рассчитаем ежемесячный платёж и сопроводим покупку без комиссии для покупателя.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#f2f6f9">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%230c2a45'/%3E%3Cpath d='M3 19q3.25-4 6.5 0t6.5 0 6.5 0 6.5 0' fill='none' stroke='%23ffc21a' stroke-width='2.4' stroke-linecap='round'/%3E%3Ccircle cx='16' cy='10' r='3.2' fill='%23ffc21a'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@300..800&family=Unbounded:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="motion.css">
+<link rel="stylesheet" href="styles.css">
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"}}</script>
+</head>
+<body>
+
+<header class="bar" id="bar">
+  <a class="logo" href="#top" aria-label="Новостройки Крыма, на главную">
+    <svg viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="#0c2a45"/><path d="M3 19q3.25-4 6.5 0t6.5 0 6.5 0 6.5 0" fill="none" stroke="#ffc21a" stroke-width="2.4" stroke-linecap="round"/><circle cx="16" cy="10" r="3.2" fill="#ffc21a"/></svg>
+    <span>Новостройки Крыма</span>
+  </a>
+  <nav class="bar__nav" aria-label="Разделы">
+    <a href="#who" data-roll>Для кого</a><a href="#calc" data-roll>Платёж</a><a href="#route" data-roll>Курс покупки</a><a href="#faq" data-roll>Вопросы</a>
+  </nav>
+  <a class="btn btn--sm" href="#lead" data-magnetic>Подобрать квартиру</a>
+</header>
+
+<main>
+<!-- HERO -->
+<section class="hero" id="top">
+  <canvas id="gl" aria-hidden="true"></canvas>
+  <div class="hero__fallback" aria-hidden="true"></div>
+  <div class="hero__text">
+    <h1 class="hero__title" data-wave data-wave-min="360" data-wave-max="780" data-wave-radius="190">Квартира у моря в Крыму с ипотекой от 8%</h1>
+    <p class="hero__lead">Подберём новостройку у застройщика под ваш бюджет, рассчитаем ежемесячный платёж и проведём сделку дистанционно. Из любого региона России.</p>
+    <div class="hero__act">
+      <a class="btn" href="#calc" data-magnetic>Рассчитать платёж</a>
+      <a class="btn btn--ghost" href="#lead" data-magnetic>Оставить заявку</a>
+    </div>
+    <p class="hero__note">Ставка 8% действует при соответствии условиям программы. Проверим это до того, как вы выберете квартиру.</p>
+  </div>
+  <ul class="hero__facts" aria-label="Коротко">
+    <li><b>0 ₽</b><span>комиссия для покупателя, нас оплачивает застройщик</span></li>
+    <li><b>Цена застройщика</b><span>без наценки агентства</span></li>
+    <li><b>Дистанционно</b><span>консультация, подбор и сделка без поездки</span></li>
+  </ul>
+</section>
+
+<!-- ДЛЯ КОГО -->
+<section class="sec who" id="who">
+  <div class="sec__head" data-reveal>
+    <h2>Крым возможен, даже если семейная ипотека вам не подошла</h2>
+    <p class="head__p">Выберите, что про вас, и посмотрите, как мы это решаем.</p>
+  </div>
+  <div class="who__tabs" data-reveal>
+    <div class="who__scroll"><div data-pill role="tablist" aria-label="Кто вы" id="whoTabs">
+      <button data-pill-item role="tab" type="button">Без семейной ипотеки</button>
+      <button data-pill-item role="tab" type="button">Семья у моря</button>
+      <button data-pill-item role="tab" type="button">Аренда и капитал</button>
+      <button data-pill-item role="tab" type="button">Из другого региона</button>
+    </div></div>
+  </div>
+  <div class="who__panel" id="whoPanel" aria-live="polite">
+    <p class="who__pain" id="whoPain"></p>
+    <p class="who__do" id="whoDo"></p>
+    <a class="btn btn--ghost" href="#calc" data-magnetic>Посчитать платёж</a>
+  </div>
+</section>
+
+<!-- КАЛЬКУЛЯТОР -->
+<section class="sec calc" id="calc">
+  <div class="sec__head" data-reveal>
+    <h2>Сколько платить каждый месяц</h2>
+    <p class="head__p">Главный вопрос покупателя: какая квартира по карману и какой будет платёж. Подвигайте ползунки.</p>
+  </div>
+  <div class="calc__grid">
+    <form class="calc__form" id="calcForm" data-reveal onsubmit="return false">
+      <label class="rng">
+        <span class="rng__t">Стоимость квартиры <output id="oPrice">8 млн ₽</output></span>
+        <input type="range" id="iPrice" min="2" max="25" step="0.1" value="8">
+      </label>
+      <label class="rng">
+        <span class="rng__t">Первоначальный взнос <output id="oDown">20% · 1,6 млн ₽</output></span>
+        <input type="range" id="iDown" min="10" max="70" step="1" value="20">
+      </label>
+      <label class="rng">
+        <span class="rng__t">Срок <output id="oTerm">20 лет</output></span>
+        <input type="range" id="iTerm" min="5" max="30" step="1" value="20">
+      </label>
+      <p class="calc__rate"><span class="buoy" aria-hidden="true"></span>Ставка в расчёте: 8% годовых. Это ориентир для покупателей, подходящих под условия программы; минимальный взнос и срок зависят от программы и банка, назовём точные при консультации.</p>
+    </form>
+    <div class="calc__out" data-reveal data-reveal-delay="120">
+      <div class="vessel" aria-hidden="true">
+        <svg viewBox="0 0 220 300" preserveAspectRatio="none">
+          <defs><clipPath id="vclip"><rect x="6" y="6" width="208" height="288" rx="26"/></clipPath></defs>
+          <g clip-path="url(#vclip)">
+            <rect x="0" y="0" width="220" height="300" fill="#e9f1f7"/>
+            <g id="wBase"><path class="wv wv--a" id="wvA"/><path class="wv wv--b" id="wvB"/></g>
+          </g>
+          <rect x="6" y="6" width="208" height="288" rx="26" fill="none" stroke="#0c2a45" stroke-width="2"/>
+          <g class="ticks" stroke="#0c2a45" stroke-width="1.5" opacity=".5"><path d="M6 80h18M6 150h28M6 220h18"/></g>
+        </svg>
+        <div class="vessel__lbl vessel__lbl--int" id="lblInt"></div>
+        <div class="vessel__lbl vessel__lbl--pr" id="lblPr"></div>
+      </div>
+      <div class="calc__nums">
+        <p class="calc__big"><span id="oPay">0</span><small>в месяц</small></p>
+        <dl class="calc__dl">
+          <div><dt>Сумма кредита</dt><dd id="oLoan"></dd></div>
+          <div><dt>Проценты за весь срок</dt><dd id="oInt"></dd></div>
+          <div><dt>Всего банку</dt><dd id="oAll"></dd></div>
+        </dl>
+        <a class="btn btn--block" href="#lead" id="saveCalc" data-magnetic>Проверить, подхожу ли я под 8%</a>
+        <p class="calc__fine">Расчёт ориентировочный, это не предложение банка. Аннуитетный платёж без страховок и комиссий.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- КУРС ПОКУПКИ -->
+<section class="route" id="route">
+  <div class="route__pin">
+    <div class="route__head" data-reveal>
+      <h2>Курс покупки: от консультации до ключей</h2>
+    </div>
+    <div class="route__stage">
+      <div class="chart" id="chartWrap">
+        <svg id="chart" viewBox="10 20 900 540" role="img" aria-label="Карта Крыма с маршрутом покупки из Екатеринбурга в Севастополь">
+          <g id="seaRings"></g>
+          <path id="land" class="land"/>
+          <g id="contours"></g>
+          <path id="routeBase" class="rt rt--base"/>
+          <path id="routeLive" class="rt rt--live"/>
+          <g id="pins"></g>
+          <g id="marks"></g>
+          <g id="boat" class="boat"><g transform="scale(1.5)"><path d="M-12 4h24l-6 9h-12z" fill="#0c2a45"/><path d="M0-16v18M0-16l11 14h-11z" fill="#ffc21a" stroke="#0c2a45" stroke-width="1.6" stroke-linejoin="round"/></g></g>
+          <g class="rose" transform="translate(850 500)" aria-hidden="true"><circle r="34" fill="none" stroke="#0c2a45" stroke-width="1.2" opacity=".45"/><path d="M0-34v68M-34 0h68" stroke="#0c2a45" stroke-width="1.2" opacity=".45"/><path d="M0-30l6 30-6 30-6-30z" fill="#0c2a45"/><text y="-40" text-anchor="middle" font-size="13" fill="#0c2a45">С</text></g>
+        </svg>
+      </div>
+      <ol class="steps" id="steps">
+        <li><h3>Консультация по рынку Крыма</h3><p>Разберём цель покупки: жизнь у моря, отдых или аренда. Работаем дистанционно, ваш регион не важен.</p></li>
+        <li><h3>Подбор и сравнение</h3><p>Подберём квартиры по бюджету и цели и сравним предложения разных застройщиков, а не одного жилого комплекса.</p></li>
+        <li><h3>Расчёт взноса и платежей</h3><p>Посчитаем первоначальный взнос и ежемесячный платёж под вашу ситуацию, чтобы вы видели цифры до решения.</p></li>
+        <li><h3>Ипотечная программа</h3><p>Поможем выбрать программу и проверим, подходите ли вы под ставку 8% и какие у неё условия и ограничения.</p></li>
+        <li><h3>Проверка документов</h3><p>Проверим документы и условия приобретения, чтобы покупка у застройщика была понятной и безопасной.</p></li>
+        <li><h3>Сделка и оформление</h3><p>Сопроводим сделку до оформления недвижимости. Квартира по цене застройщика, комиссию агентству вы не платите.</p></li>
+      </ol>
+    </div>
+    <div class="route__track" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  </div>
+</section>
+
+<!-- ЧТО ВКЛЮЧЕНО -->
+<section class="sec incl" id="incl">
+  <div class="incl__big" data-reveal>
+    <p class="incl__zero">0 ₽</p>
+    <p class="incl__cap">Столько вы платите агентству. Квартира стоит как у застройщика, а нашу работу оплачивает он.</p>
+  </div>
+  <div>
+    <h2 class="incl__h" data-reveal>Что входит</h2>
+    <ul class="incl__list" id="inclList" data-stagger>
+      <li>Индивидуальная консультация по рынку недвижимости Крыма</li>
+      <li>Подбор квартир по бюджету и цели покупки</li>
+      <li>Сравнение предложений разных застройщиков</li>
+      <li>Расчёт первоначального взноса и ипотечных платежей</li>
+      <li>Помощь в выборе ипотечной программы</li>
+      <li>Проверка документов и условий приобретения</li>
+      <li>Сопровождение сделки до оформления недвижимости</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ВОПРОСЫ -->
+<section class="sec faq" id="faq">
+  <div class="sec__head" data-reveal>
+    <h2>Что обычно спрашивают перед покупкой</h2>
+  </div>
+  <div class="faq__list" id="faqList">
+    <div class="q" data-reveal><button class="q__b" type="button" aria-expanded="false"><span>Ипотека под 8% действительно доступна мне?</span><i></i></button><div class="q__a"><p>Зависит от условий программы и вашей ситуации. Мы проверяем это в начале, до подбора квартир, чтобы вы не тратили время на варианты, которые не подойдут. Не подойдёте под 8%, честно скажем и посчитаем другие варианты.</p></div></div>
+    <div class="q" data-reveal><button class="q__b" type="button" aria-expanded="false"><span>Какие условия и ограничения у программы?</span><i></i></button><div class="q__a"><p>Условия программы и банков меняются, поэтому актуальные называем при расчёте под вас: кто может участвовать, на какие объекты распространяется ставка, какой нужен взнос и на какой срок.</p></div></div>
+    <div class="q" data-reveal><button class="q__b" type="button" aria-expanded="false"><span>Сколько нужно денег на первоначальный взнос?</span><i></i></button><div class="q__a"><p>Минимальный взнос определяют программа и банк. Прикинуть свою сумму можно в калькуляторе выше, а точную назовём на консультации после проверки вашей ситуации.</p></div></div>
+    <div class="q" data-reveal><button class="q__b" type="button" aria-expanded="false"><span>Не окажется ли квартира дороже, чем у застройщика?</span><i></i></button><div class="q__a"><p>Нет. Вы покупаете по цене застройщика, без дополнительной комиссии агентству.</p></div></div>
+    <div class="q" data-reveal><button class="q__b" type="button" aria-expanded="false"><span>Почему ваши услуги бесплатны?</span><i></i></button><div class="q__a"><p>Нашу работу оплачивает застройщик, у которого вы покупаете квартиру. Это работает при покупке у застройщиков-партнёров, и цена для вас от этого не растёт.</p></div></div>
+    <div class="q" data-reveal><button class="q__b" type="button" aria-expanded="false"><span>Можно ли купить, если я живу в другом регионе?</span><i></i></button><div class="q__a"><p>Да. Консультации, подбор и сопровождение проходят дистанционно, работаем со всей Россией. Базовый регион агентства Екатеринбург, но приезжать никуда не нужно.</p></div></div>
+    <div class="q" data-reveal><button class="q__b" type="button" aria-expanded="false"><span>Насколько безопасно покупать строящуюся недвижимость?</span><i></i></button><div class="q__a"><p>Мы проверяем документы и условия приобретения у застройщика до сделки и сопровождаем её до оформления. Гарантий мы не обещаем, но вы будете видеть, что именно подписываете и почему.</p></div></div>
+    <div class="q" data-reveal><button class="q__b" type="button" aria-expanded="false"><span>Выгодно ли сейчас покупать недвижимость в Крыму?</span><i></i></button><div class="q__a"><p>Ответ зависит от цели: жить, отдыхать или сдавать. Доходность и рост цен мы не гарантируем. Сравним объекты и посчитаем платёж, а решение остаётся за вами.</p></div></div>
+  </div>
+</section>
+
+<!-- ЗАЯВКА -->
+<section class="sec lead" id="lead">
+  <div class="lead__side" data-reveal>
+    <h2>Расскажите, что ищете</h2>
+    <p class="head__p">Оставьте контакт. Вернёмся с подборкой новостроек и расчётом платежа. Чем точнее цель и бюджет, тем точнее подборка.</p>
+    <p class="lead__alt">Можно и так: <a href="https://vk.ru/rieltor_ekaterinburg_rf" target="_blank" rel="noopener" data-roll>написать во ВКонтакте</a></p>
+  </div>
+  <form class="form" id="leadForm" novalidate data-reveal data-reveal-delay="100">
+    <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+    <input type="hidden" name="calc" id="calcField">
+    <label>Имя<input name="name" autocomplete="name" required></label>
+    <label>Телефон или Telegram<input name="phone" type="tel" autocomplete="tel" placeholder="+7 или @ник" required></label>
+    <div class="form__2">
+      <label>Цель покупки<select name="goal"><option>Для жизни</option><option>Для отдыха</option><option>Для сдачи в аренду</option><option>Для инвестиций</option><option>Пока присматриваюсь</option></select></label>
+      <label>Город<select name="city" id="citySel"><option>Севастополь</option><option>Симферополь</option><option>Евпатория</option><option>Другой город Крыма</option><option>Пока не знаю</option></select></label>
+    </div>
+    <div class="form__2">
+      <label>Ваш регион<input name="region" autocomplete="address-level1" placeholder="Свердловская обл."></label>
+      <label>Бюджет и взнос<input name="budget" placeholder="до 8 млн, взнос 1,5"></label>
+    </div>
+    <label>Пожелания<textarea name="wish" rows="3" placeholder="Этаж, вид, срок сдачи, сколько комнат"></textarea></label>
+    <button class="btn btn--block" type="submit">Получить подборку</button>
+    <p class="form__ok" id="formMsg" role="status"></p>
+    <p class="form__legal">Нажимая кнопку, вы соглашаетесь с <a href="privacy.html">политикой конфиденциальности</a>.</p>
+  </form>
+</section>
+</main>
+
+<footer class="foot">
+  <p class="foot__big" aria-hidden="true">Новостройки Крыма</p>
+  <p class="foot__row"><span>Новостройки Крыма и Севастополя от застройщиков. Базовый регион агентства Екатеринбург, консультации и подбор по всей России дистанционно.</span><a href="https://vk.ru/rieltor_ekaterinburg_rf" target="_blank" rel="noopener">ВКонтакте</a><a href="privacy.html">Политика конфиденциальности</a></p>
+  <p class="foot__fine">Ставка от 8% применяется при соответствии покупателя и объекта условиям программы. Информация на сайте не является публичной офертой.</p>
+</footer>
+
+<script src="motion.js" defer></script>
+<script src="script.js"></script>
+<script type="module" src="scene3d.js"></script>
+</body>
+</html>
