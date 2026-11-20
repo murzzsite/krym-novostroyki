@@ -203,3 +203,17 @@ input[type=range]::-moz-range-thumb{width:24px;height:24px;border-radius:50%;bac
 @keyframes drift{to{transform:translateX(-110px)}}
 @media (prefers-reduced-motion:reduce){.wv,.intro .hero__title .mk-w,.intro .hero__lead,.intro .hero__act,.intro .hero__note,.intro .hero__facts{animation:none}}
 .mk-word{display:inline-block;white-space:nowrap}
+
+.logo__t{font-size:14.5px;line-height:1.12;font-weight:600;letter-spacing:-.01em}
+.chart{position:relative}
+.lbl{position:absolute;z-index:3;white-space:nowrap;padding:5px 12px;border-radius:999px;background:#fff;border:2px solid var(--ink);font:700 15px/1.1 var(--f-text);color:var(--ink);box-shadow:0 3px 0 rgba(12,42,69,.18);cursor:pointer;transition:background .25s}
+.lbl--l{transform:translate(calc(-100% - 14px),-50%)}.lbl--r{transform:translate(14px,-50%)}
+.lbl.on{background:var(--buoy)}
+.lbl--e{cursor:default;background:var(--ink);color:#fff;transform:translate(14px,-50%)}
+.expert{display:grid;grid-template-columns:minmax(120px,170px) 1fr;gap:20px;align-items:center;margin-top:32px}
+.expert img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 20%;border-radius:999px 999px 24px 24px;border:2.5px solid var(--ink)}
+.expert__n{font:600 clamp(24px,2.4vw,32px)/1.1 var(--f-text);letter-spacing:-.02em}
+.expert__r{margin-top:4px;color:var(--ink2);font-size:15px}
+.expert__c{display:grid;gap:4px;margin-top:14px;font-weight:600;font-size:16px}
+.expert__c a{text-decoration:none;justify-self:start}
+@media (max-width:560px){.lbl{font-size:13px;padding:4px 9px}.expert{grid-template-columns:110px 1fr}}

@@ -133,16 +133,27 @@ window.KR = { p: 0, reduce: matchMedia('(prefers-reduced-motion: reduce)').match
     // city pins
     const CITIES = [['Севастополь', [33.52, 44.62], -1], ['Симферополь', [34.1, 44.95], 1], ['Евпатория', [33.37, 45.2], -1]];
     const pinsG = $('#pins');
+    const wrap = $('#chartWrap'), svgEl = $('#chart'), labels = [];
+    const addLabel = (txt, x, y, side, cls) => {
+      const l = document.createElement('span'); l.className = 'lbl ' + (cls || 'lbl--c') + (side < 0 ? ' lbl--l' : ' lbl--r'); l.textContent = txt;
+      wrap.appendChild(l); labels.push([l, x, y]); return l;
+    };
+    const place = () => {
+      const m = svgEl.getScreenCTM(), wr = wrap.getBoundingClientRect(); if (!m) return;
+      labels.forEach(([l, x, y]) => { l.style.left = (m.a * x + m.e - wr.left) + 'px'; l.style.top = (m.d * y + m.f - wr.top) + 'px'; });
+    };
     CITIES.forEach(([n, ll, side]) => {
       const [x, y] = proj(ll);
       const g = mk('g', { class: 'pin', tabindex: 0, role: 'button', 'aria-label': 'Город ' + n }, pinsG);
       mk('circle', { cx: x, cy: y, r: 8 }, g);
-      const t = mk('text', { x: x + side * 16, y: y + 5, 'text-anchor': side < 0 ? 'end' : 'start' }, g); t.textContent = n;
-      const pick = () => { $$('.pin').forEach(p => p.classList.toggle('on', p === g)); const sel = $('#citySel'); if (sel) sel.value = n; };
+      const lb = addLabel(n, x, y, side);
+      const pick = () => { $('.pin').forEach(p => p.classList.toggle('on', p === g)); $('.lbl--c').forEach(l => l.classList.toggle('on', l === lb)); const sel = $('#citySel'); if (sel) sel.value = n; };
+      g._lb = lb; lb.addEventListener('click', pick);
       g.addEventListener('click', pick); g.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(); } });
     });
-    const sevCity = $$('.pin')[0]; if (sevCity) sevCity.classList.add('on');
-    const st = mk('text', { x: 66, y: 40, 'font-size': 15, fill: '#0c2a45', style: 'font:600 15px Onest,sans-serif' }, $('#marks')); st.textContent = 'Екатеринбург';
+    const sevCity = $('.pin')[0]; if (sevCity) { sevCity.classList.add('on'); sevCity._lb.classList.add('on'); }
+    addLabel('Екатеринбург', 50, 48, 1, 'lbl--e');
+    addEventListener('resize', place); place(); setTimeout(place, 400); document.fonts && document.fonts.ready.then(place);
 
     // step markers
     const marks = [];
