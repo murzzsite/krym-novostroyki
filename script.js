@@ -56,12 +56,12 @@ window.KR = { p: 0, reduce: matchMedia('(prefers-reduced-motion: reduce)').match
   let calcSummary = '';
   safe(() => {
     const iP = $('#iPrice'), iD = $('#iDown'), iT = $('#iTerm');
-    const oP = $('#oPrice'), oD = $('#oDown'), oT = $('#oTerm'), oPay = $('#oPay'), oLoan = $('#oLoan'), oInt = $('#oInt'), oAll = $('#oAll');
+    const oP = $('#oPrice'), oD = $('#oDown'), oT = $('#oTerm'), oPay = $('#oPay'), oLoan = $('#oLoan');
     const gA = document.createElementNS('http://www.w3.org/2000/svg', 'g'), gB = gA.cloneNode();
     const wave = cls => { let d = 'M-110 0'; for (let x = -110; x < 440; x += 110) d += ` q27.5 -9 55 0 t55 0`; return `<path class="wv ${cls}" d="${d} V420 H-110 Z"/>`; };
     gA.innerHTML = wave('wv--a'); gB.innerHTML = wave('wv--b');
     const base = $('#wBase'); base.innerHTML = ''; base.append(gA, gB);
-    const lInt = $('#lblInt'), lPr = $('#lblPr');
+    const lPr = $('#lblPr');
     const MAXV = 55e6, TOP = 292, H = 276;
     let cur = { pay: 0, loan: 0, int: 0, all: 0, a: 0, b: 0 }, goal = null, raf = 0;
     const calc = () => {
@@ -88,12 +88,10 @@ window.KR = { p: 0, reduce: matchMedia('(prefers-reduced-motion: reduce)').match
         const d = goal[k] - cur[k]; const small = k === 'a' || k === 'b' ? 0.0005 : 1;
         if (Math.abs(d) > small) { cur[k] += reduce ? d : d * 0.16; moving = true; } else cur[k] = goal[k];
       }
-      oPay.textContent = money(cur.pay); oLoan.textContent = money(cur.loan); oInt.textContent = money(cur.int); oAll.textContent = money(cur.all);
+      oPay.textContent = money(cur.pay); oLoan.textContent = money(cur.loan);
       const ya = TOP - H * cur.a, yb = TOP - H * cur.b;
       gA.setAttribute('transform', `translate(0 ${ya})`); gB.setAttribute('transform', `translate(0 ${yb})`);
       const box = $('.vessel').getBoundingClientRect(), hh = box.height / 300;
-      const bandH = (yb - ya) * hh;
-      lInt.style.top = ((ya + 14) * hh) + 'px'; lInt.style.opacity = bandH > 44 ? 1 : 0; lInt.textContent = 'Проценты ' + mln(cur.int);
       lPr.style.top = ((yb + 18) * hh) + 'px'; lPr.style.opacity = (TOP - yb) * hh > 44 ? 1 : 0; lPr.textContent = 'Кредит ' + mln(cur.loan);
       if (moving) raf = requestAnimationFrame(tick);
     };

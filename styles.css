@@ -143,9 +143,10 @@ input[type=range]::-moz-range-thumb{width:24px;height:24px;border-radius:50%;bac
 .q__b[aria-expanded=true] i{background:var(--buoy);transform:rotate(180deg)}
 .q__b[aria-expanded=true] i::after{transform:rotate(0)}
 .q__a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s cubic-bezier(.22,1,.36,1)}
-.q__a>p{overflow:hidden;color:var(--ink2);max-width:62ch;font-size:clamp(17px,1.35vw,19px)}
+.q__a>p,.q__a>.q__t{overflow:hidden;color:var(--ink2);max-width:62ch;font-size:clamp(17px,1.35vw,19px)}
 .q__b[aria-expanded=true]+.q__a{grid-template-rows:1fr}
-.q__b[aria-expanded=true]+.q__a>p{padding-bottom:24px}
+.q__b[aria-expanded=true]+.q__a>p,.q__b[aria-expanded=true]+.q__a>.q__t{padding-bottom:24px}
+.q__t p+p,.q__t p+ul,.q__t ul+p{margin-top:.7em}.q__t ul{padding-left:1.2em;list-style:disc}.q__t li{margin:.2em 0}
 
 /* lead */
 .lead{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(28px,6vw,96px);align-items:start}
