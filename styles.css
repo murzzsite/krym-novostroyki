@@ -218,3 +218,7 @@ input[type=range]::-moz-range-thumb{width:24px;height:24px;border-radius:50%;bac
 .expert__c{display:grid;gap:4px;margin-top:14px;font-weight:600;font-size:16px}
 .expert__c a{text-decoration:none;justify-self:start}
 @media (max-width:560px){.lbl{font-size:13px;padding:4px 9px}.expert{grid-template-columns:110px 1fr}}
+
+.form label.agree{display:flex;gap:12px;align-items:flex-start;font-weight:400;font-size:14px;color:var(--ink2);line-height:1.45}
+.form label.agree input[type=checkbox]{width:22px;height:22px;padding:0;margin:1px 0 0;flex:none;accent-color:var(--sea)}
+.form .agree a{color:var(--ink)}

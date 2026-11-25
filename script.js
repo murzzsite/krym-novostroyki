@@ -223,6 +223,8 @@ window.KR = { p: 0, reduce: matchMedia('(prefers-reduced-motion: reduce)').match
     const payload = {}; new FormData(form).forEach((v, k) => { payload[k] = v; });
     if (payload._gotcha) return;
     if (!payload.name || !payload.phone) { msg.textContent = 'Укажите имя и телефон или Telegram.'; return; }
+    if (!form.elements.consent || !form.elements.consent.checked) { msg.textContent = 'Отметьте согласие с политикой конфиденциальности.'; return; }
+    delete payload.consent;
     payload.comment = ['Цель: ' + payload.goal, 'Город: ' + payload.city, payload.region ? 'Регион: ' + payload.region : '', payload.budget ? 'Бюджет и взнос: ' + payload.budget : '', payload.wish ? 'Пожелания: ' + payload.wish : '', payload.calc || ''].filter(Boolean).join(' | ');
     btn.disabled = true; btn.textContent = 'Отправляем...'; msg.textContent = '';
     try {
